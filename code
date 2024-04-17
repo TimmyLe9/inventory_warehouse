@@ -1,0 +1,140 @@
+var Stock = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Stock");
+
+function onEdit() {
+  // Manual override for set the current stock to previous
+  if (Stock.getRange("E124").isChecked()) {
+   oldStock();
+   Stock.getRange("E124").setValue("FALSE");
+  }
+
+  // Product Confirm
+  if (Stock.getRange("C66").isChecked()) {
+    adjProduct();
+    Stock.getRange("C66").setValue("FALSE");
+  }
+
+  // Supply Confirm
+  if (Stock.getRange("C95").isChecked()) {
+    adjSupply();
+    Stock.getRange("C95").setValue("FALSE");
+  }
+
+  // Other(s) Confirm
+  if (Stock.getRange("C124").isChecked()) {
+    adjOther();
+    Stock.getRange("C124").setValue("FALSE");
+  }
+
+}
+
+/** Set the current stock value to the previous value cells */
+function oldStock() {
+
+  for (var i = 5; i <= 13; i++) { // Powder Mix
+    var temp = Stock.getRange(i, 4).getValue();
+    Stock.getRange(i, 5).setValue(temp);
+  }
+
+    for (var i = 15; i <= 28; i++) { // Bubble & Jam
+    var temp = Stock.getRange(i, 4).getValue();
+    Stock.getRange(i, 5).setValue(temp);
+  }
+
+    for (var i = 30; i <= 36; i++) { // Milk Powder & Tea Leaf
+    var temp = Stock.getRange(i, 4).getValue();
+    Stock.getRange(i, 5).setValue(temp);
+  }
+
+    for (var i = 38; i <= 55; i++) { // Sugar & Syrup
+    var temp = Stock.getRange(i, 4).getValue();
+    Stock.getRange(i, 5).setValue(temp);
+  }
+
+    for (var i = 57; i <= 61; i++) { // Smoothie & Paste
+    var temp = Stock.getRange(i, 4).getValue();
+    Stock.getRange(i, 5).setValue(temp);
+  }
+
+    for (var i = 63; i <= 65; i++) { // Coffee Supply
+    var temp = Stock.getRange(i, 4).getValue();
+    Stock.getRange(i, 5).setValue(temp);
+  }
+
+  for (var i = 69; i <= 94; i++) { // Supply table
+    var temp = Stock.getRange(i, 4).getValue();
+    Stock.getRange(i, 5).setValue(temp);
+  }
+
+    for (var i = 98; i <= 123; i++) { // Other(s)
+    var temp = Stock.getRange(i, 4).getValue();
+    Stock.getRange(i, 5).setValue(temp);
+  }
+
+}
+
+/** Adjust the numbers for the Product table */
+function adjProduct() {
+  for (var i = 5; i <= 13; i++) { // Powder Mix
+    var temp = Stock.getRange(i, 3).getValue();
+    var x = Stock.getRange(i, 2).getValue();
+    Stock.getRange(i, 2).setValue(x+temp);
+    Stock.getRange(i,3).clearContent();
+  }
+
+  for (var i = 15; i <= 28; i++) { // Bubble & Jam
+    var temp = Stock.getRange(i, 3).getValue();
+    var x = Stock.getRange(i, 2).getValue();
+    Stock.getRange(i, 2).setValue(x+temp);
+    Stock.getRange(i,3).clearContent();
+  }
+
+   for (var i = 30; i <= 36; i++) { // Milk Powder & Tea Leaf
+    var temp = Stock.getRange(i, 3).getValue();
+    var x = Stock.getRange(i, 2).getValue();
+    Stock.getRange(i, 2).setValue(x+temp);
+    Stock.getRange(i,3).clearContent();
+   }
+
+  for (var i = 38; i <= 55; i++) { // Sugar & Syrup
+    var temp = Stock.getRange(i, 3).getValue();
+    var x = Stock.getRange(i, 2).getValue();
+    Stock.getRange(i, 2).setValue(x+temp);
+    Stock.getRange(i,3).clearContent();
+  }
+
+  for (var i = 57; i <= 61; i++) { // Smoothie & Paste
+    var temp = Stock.getRange(i, 3).getValue();
+    var x = Stock.getRange(i, 2).getValue();
+    Stock.getRange(i, 2).setValue(x+temp);
+    Stock.getRange(i,3).clearContent();
+  }
+
+  for (var i = 63; i <= 65; i++) { // Coffee Supply
+    var temp = Stock.getRange(i, 3).getValue();
+    var x = Stock.getRange(i, 2).getValue();
+    Stock.getRange(i, 2).setValue(x+temp);
+    Stock.getRange(i,3).clearContent();
+  }
+}
+
+/** Adjust the numbers for the Supply table */
+function adjSupply() {
+
+  for (var i = 69; i <= 94; i++) { // Supply table
+    var temp = Stock.getRange(i, 3).getValue();
+    var x = Stock.getRange(i, 2).getValue();
+    Stock.getRange(i, 2).setValue(x+temp);
+    Stock.getRange(i,3).clearContent();
+  }
+}
+
+/** Adjust the numbers for the Other(s) table */
+function adjOther() {
+
+  for (var i = 98; i <= 123; i++) { // Other(s)
+    var temp = Stock.getRange(i, 3).getValue();
+    var x = Stock.getRange(i, 2).getValue();
+    Stock.getRange(i, 2).setValue(x+temp);
+    Stock.getRange(i,3).clearContent();
+  }
+}
